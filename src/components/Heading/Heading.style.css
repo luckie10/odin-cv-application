@@ -1,0 +1,11 @@
+input {
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.contact-info span {
+  margin: 10px;
+}
