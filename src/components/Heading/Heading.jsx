@@ -4,7 +4,7 @@ import "./Heading.style.css";
 
 function Heading() {
   const [name, setName] = useState("Full Name");
-  const [phoneNumber, setPhoneNumber] = useState("###-###-####");
+  const [phoneNumber, setPhoneNumber] = useState("(###) ###-####");
   const [email, setEmail] = useState("email@foo.bar");
 
   return (
