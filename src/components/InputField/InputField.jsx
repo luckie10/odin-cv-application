@@ -9,7 +9,7 @@ export default function InputField({ state, setState, type = "input" }) {
     <>
       {isEditable ? (
         <InputType
-          class="inherit"
+          className="inherit"
           value={state}
           onChange={(event) => setState(event.target.value)}
           onBlur={() => setIsEditable(false)}
