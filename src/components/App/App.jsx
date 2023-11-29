@@ -6,11 +6,6 @@ import Experience from "../Experience/Experience";
 import References from "../References/References";
 
 function App() {
-  const testDegrees = [
-    { id: 0, title: "BsCN", school: "UoW", year: 2014 },
-    { id: 1, title: "MBA", school: "Booth", year: 2023 },
-  ];
-
   const testExperiences = [
     {
       id: 0,
@@ -37,7 +32,7 @@ function App() {
     <>
       <Heading />
       <Section name="Education">
-        <Education degrees={testDegrees} />
+        <Education />
       </Section>
       <Section name="Experience">
         <Experience experiences={testExperiences} />
