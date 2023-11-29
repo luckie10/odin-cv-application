@@ -1,3 +1,7 @@
+import { useState } from "react";
+import InputField from "../InputField";
+import "./Education.style.css";
+
 const exampleDegrees = [
   {
     id: 0,
@@ -16,13 +20,32 @@ const exampleDegrees = [
 function Education() {
   const [degrees, setDegrees] = useState(exampleDegrees);
 
+  function setStateHandler(id, stateKey) {
+    return function (newValue) {
+      setDegrees(
+        degrees.map((degree) => {
+          if (degree.id === id) return { ...degree, [stateKey]: newValue };
+          return degree;
+        }),
+      );
+    };
+  }
+
   return (
     <>
       {degrees.map(({ id, title, school, year }) => (
         <div key={id}>
-          <h3>{title}</h3>
-          <p>{school}</p>
-          <p>{year}</p>
+          <h3>
+            <InputField state={title} setState={setStateHandler(id, "title")} />
+            <InputField state={year} setState={setStateHandler(id, "year")} />
+          </h3>
+          <p>
+            <InputField
+              state={school}
+              setState={setStateHandler(id, "school")}
+            />
+          </p>
+          <p></p>
         </div>
       ))}
     </>
