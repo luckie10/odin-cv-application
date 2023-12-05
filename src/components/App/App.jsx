@@ -6,11 +6,6 @@ import Experience from "../Experience/Experience";
 import References from "../References/References";
 
 function App() {
-  const testReferences = [
-    { id: 0, name: "Me", number: "519-###-####", email: "blah@blahbl.ah" },
-    { id: 1, name: "Myself", number: "313-###-####", email: "foo@b.ar" },
-  ];
-
   return (
     <>
       <Heading />
@@ -21,7 +16,7 @@ function App() {
         <Experience />
       </Section>
       <Section name="References">
-        <References references={testReferences} />
+        <References />
       </Section>
     </>
   );
