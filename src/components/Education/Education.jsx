@@ -22,21 +22,24 @@ function Education() {
   const [degrees, setDegrees] = useState(exampleDegrees);
 
   return (
-    <>
+    <div className="education-container">
       {degrees.map(({ id, title, school, year }) => (
-        <div key={id}>
-          <h3>
+        <div key={id} className="school-container">
+          <h3 className="title">
             <InputField
+              inputName="education-title"
               state={title}
               setState={objectSetStateHandler(degrees, setDegrees, id, "title")}
             />
             <InputField
+              inputName="education-year"
               state={year}
               setState={objectSetStateHandler(degrees, setDegrees, id, "year")}
             />
           </h3>
-          <p>
+          <p className="education-school-container">
             <InputField
+              inputName="education-school"
               state={school}
               setState={objectSetStateHandler(
                 degrees,
@@ -49,7 +52,7 @@ function Education() {
           <p></p>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

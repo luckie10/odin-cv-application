@@ -1,8 +1,29 @@
+.school-container {
+  margin-bottom: 5px;
+}
 h3 {
   display: flex;
-  justify-content: space-between;
+  margin: 0;
+}
+p {
+  margin: 0;
 }
 
-h3 input {
+input[name="education-title"],
+span.education-title {
+  flex: 2;
+  text-align: left;
+}
+
+input[name="education-year"] {
   text-align: right;
+}
+
+.education-school-container {
+  display: flex;
+}
+
+input[name="education-school"] {
+  flex: 1;
+  text-align: left;
 }
