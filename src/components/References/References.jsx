@@ -8,7 +8,7 @@ const exampleReferences = [
     department: "Department of Civil Engineering",
     organization: "University of Illinois at Urbana-Champaign",
     number: "(217) 244 – 2345",
-    email: "blah@blahbl.ah",
+    email: "email@illinois.edu",
   },
   {
     id: 1,
