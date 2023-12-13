@@ -1,3 +1,5 @@
+import InputField from "./InputField";
+
 export function objectSetStateHandler(state, setFunction, id, objectKey) {
   return function (newValue) {
     setFunction(
@@ -8,3 +10,18 @@ export function objectSetStateHandler(state, setFunction, id, objectKey) {
     );
   };
 }
+
+export const generateInputField = (
+  stateKey,
+  index,
+  id,
+  state,
+  setStateCb,
+  type = "input",
+) => (
+  <InputField
+    state={state[index][stateKey]}
+    setState={objectSetStateHandler(state, setStateCb, id, stateKey)}
+    type={type}
+  />
+);
