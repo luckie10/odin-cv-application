@@ -1,22 +1,31 @@
 import { useState } from "react";
 import "./InputField.style.css";
 
-export default function InputField({ state, setState, type = "input" }) {
+export default function InputField({
+  state,
+  setState,
+  inputName,
+  type = "input",
+}) {
   const [isEditable, setIsEditable] = useState(false);
   const InputType = type;
 
+  console.log(inputName);
   return (
     <>
       {isEditable ? (
         <InputType
           className="inherit"
+          name={inputName}
           value={state}
           onChange={(event) => setState(event.target.value)}
           onBlur={() => setIsEditable(false)}
           autoFocus
         />
       ) : (
-        <span onClick={() => setIsEditable(true)}>{state}</span>
+        <span className={inputName} onClick={() => setIsEditable(true)}>
+          {state}
+        </span>
       )}
     </>
   );
