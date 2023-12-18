@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateInputField } from "../helpers";
+import { generateInputFieldElements } from "../helpers";
 
 const exampleReferences = [
   {
@@ -25,20 +25,10 @@ const exampleReferences = [
 function References() {
   const [references, setReferences] = useState(exampleReferences);
 
-  function genRefElement(reference, generatorParams) {
-    const elements = {};
-
-    Object.keys(reference).forEach((key) => {
-      elements[key] = generateInputField(key, ...generatorParams);
-    });
-
-    return elements;
-  }
-
   function generateReference(reference, index) {
     const generatorParams = [index, reference.id, references, setReferences];
     const { name, title, department, organization, number, email } =
-      genRefElement(reference, generatorParams);
+      generateInputFieldElements(reference, generatorParams);
 
     return (
       <div key={reference.id}>

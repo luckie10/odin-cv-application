@@ -25,3 +25,10 @@ export const generateInputField = (
     type={type}
   />
 );
+
+export function generateInputFieldElements(stateElement, generatorParams) {
+  return Object.keys(stateElement).reduce((elements, key) => {
+    elements[key] = generateInputField(key, ...generatorParams);
+    return elements;
+  }, {});
+}
