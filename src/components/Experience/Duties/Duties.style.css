@@ -1,0 +1,7 @@
+textarea[name="experience-duty"] {
+  width: 100%;
+  height: auto;
+  resize: none;
+  overflow: hidden;
+  padding: 0;
+}

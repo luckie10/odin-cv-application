@@ -1,6 +1,8 @@
 import { useState } from "react";
 import InputField from "../../InputField";
 
+import "./Duties.style.css";
+
 const exampleDuties = {
   0: "Design and execute small-scale testing to validate control algorithms derived to simulate seismic force-resistance.",
   1: "Contribute to multi-disciplinary project aimed at developing visualizations and simulations to predict seismic force damage to various materials.",
@@ -20,7 +22,12 @@ export default function Duties({ dutyId }) {
 
   return (
     <li>
-      <InputField state={duties[dutyId]} setState={setDutiesHandler(dutyId)} />
+      <InputField
+        inputName="experience-duty"
+        state={duties[dutyId]}
+        setState={setDutiesHandler(dutyId)}
+        type="textarea"
+      />
     </li>
   );
 }
