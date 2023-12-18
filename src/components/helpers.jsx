@@ -17,11 +17,13 @@ export const generateInputField = (
   id,
   state,
   setStateCb,
+  inputName,
   type = "input",
 ) => (
   <InputField
     state={state[index][stateKey]}
     setState={objectSetStateHandler(state, setStateCb, id, stateKey)}
+    inputName={`${inputName}-${stateKey}`}
     type={type}
   />
 );

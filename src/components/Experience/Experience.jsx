@@ -23,7 +23,13 @@ function Experience() {
   const [experiences, setExperiences] = useState(exampleExperinces);
 
   function generateExperience(experience, index) {
-    const generatorParams = [index, experience.id, experiences, setExperiences];
+    const generatorParams = [
+      index,
+      experience.id,
+      experiences,
+      setExperiences,
+      "experience",
+    ];
     const { company, position, date } = generateInputFieldElements(
       experience,
       generatorParams,
