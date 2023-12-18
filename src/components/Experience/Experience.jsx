@@ -2,6 +2,8 @@ import { useState } from "react";
 import { generateInputFieldElements } from "../helpers";
 import Duties from "./Duties/Duties";
 
+import "./Experience.style.css";
+
 const exampleExperinces = [
   {
     id: 0,
@@ -36,16 +38,17 @@ function Experience() {
     );
 
     return (
-      <div key={experience.id}>
+      <div key={experience.id} className="experience-container">
         <h3>
-          {position}, {date}
+          {position}
+          {date}
         </h3>
         <h4>{company}</h4>
-        <div>
+        <ul>
           {experience.dutyIds.map((duty) => (
             <Duties key={duty} dutyId={duty}></Duties>
           ))}
-        </div>
+        </ul>
       </div>
     );
   }
