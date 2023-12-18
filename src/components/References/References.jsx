@@ -33,7 +33,7 @@ function References() {
     return (
       <div key={reference.id}>
         <h3>
-          {name}, {title}
+          {name} {",\u00a0"} {title}
         </h3>
         <p>{department}</p>
         <p>{organization}</p>
