@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InputField from "../InputField";
-import { objectSetStateHandler } from "../helpers";
+import { objectSetStateHandler, deleteStateObject } from "../helpers";
 import "./Education.style.css";
 
 const exampleDegrees = [
@@ -49,7 +49,9 @@ function Education() {
               )}
             />
           </p>
-          <p></p>
+          <button onClick={() => deleteStateObject(degrees, setDegrees, id)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>

@@ -34,3 +34,7 @@ export function generateInputFieldElements(stateElement, generatorParams) {
     return elements;
   }, {});
 }
+
+export function deleteStateObject(state, setStateCb, deleteId) {
+  setStateCb(state.filter(({ id }) => deleteId !== id));
+}

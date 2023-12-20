@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateInputFieldElements } from "../helpers";
+import { generateInputFieldElements, deleteStateObject } from "../helpers";
 
 const exampleReferences = [
   {
@@ -40,6 +40,13 @@ function References() {
         <p>
           {number}, {email}
         </p>
+        <button
+          onClick={() =>
+            deleteStateObject(references, setReferences, reference.id)
+          }
+        >
+          Delete
+        </button>
       </div>
     );
   }

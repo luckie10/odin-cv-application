@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateInputFieldElements } from "../helpers";
+import { generateInputFieldElements, deleteStateObject } from "../helpers";
 import Duties from "./Duties/Duties";
 
 import "./Experience.style.css";
@@ -49,6 +49,13 @@ function Experience() {
             <Duties key={duty} dutyId={duty}></Duties>
           ))}
         </ul>
+        <button
+          onClick={() =>
+            deleteStateObject(experiences, setExperiences, experience.id)
+          }
+        >
+          Delete
+        </button>
       </div>
     );
   }
