@@ -22,8 +22,31 @@ const exampleReferences = [
   },
 ];
 
+function referenceFactory(
+  name = "Full Name",
+  title = "Title",
+  department = "Department",
+  organization = "Organization",
+  number = "(###) ###-####",
+  email = "email@example.com",
+) {
+  return {
+    id: crypto.randomUUID(),
+    name,
+    title,
+    department,
+    organization,
+    number,
+    email,
+  };
+}
+
 function References() {
-  const [references, setReferences] = useState(exampleReferences);
+  const [references, setReferences] = useState([referenceFactory()]);
+
+  function addReference() {
+    setReferences([...references, referenceFactory()]);
+  }
 
   function generateReference(reference, index) {
     const generatorParams = [index, reference.id, references, setReferences];
@@ -56,6 +79,7 @@ function References() {
       {references.map((reference, index) =>
         generateReference(reference, index),
       )}
+      <button onClick={() => addReference()}>Add</button>
     </>
   );
 }
