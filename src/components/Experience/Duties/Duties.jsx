@@ -27,12 +27,25 @@ const exampleDuties = [
   },
 ];
 
+function dutyFactory(duty = "Duty") {
+  return {
+    id: crypto.randomUUID(),
+    duty,
+  };
+}
+
 export default function Duties({ dutyIds, onUpdate }) {
   const [duties, setDuties] = useState(exampleDuties);
 
   function deleteDuty(deleteID) {
     onUpdate(dutyIds.filter((id) => id !== deleteID));
     deleteStateObject(duties, setDuties, deleteID);
+  }
+
+  function addDuty() {
+    const newDuty = dutyFactory();
+    setDuties([...duties, newDuty]);
+    onUpdate([...dutyIds, newDuty.id]);
   }
 
   return (
@@ -48,7 +61,7 @@ export default function Duties({ dutyIds, onUpdate }) {
           />
         </li>
       ))}
-      <button>+</button>
+      <button onClick={addDuty}>+</button>
     </>
   );
 }
