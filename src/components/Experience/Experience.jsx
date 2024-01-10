@@ -49,14 +49,14 @@ function Experience() {
       generatorParams,
     );
 
-    function deleteDuty(experienceId) {
-      return function (deleteID) {
+    function updateDuties(experienceId) {
+      return function (newValue) {
         setExperiences(
           experiences.map((exp) => {
             if (exp.id === experienceId)
               return {
                 ...exp,
-                dutyIds: exp.dutyIds.filter((id) => id !== deleteID),
+                dutyIds: newValue,
               };
             return exp;
           }),
@@ -74,7 +74,7 @@ function Experience() {
         <ul>
           <Duties
             dutyIds={experience.dutyIds}
-            onDelete={deleteDuty(experience.id)}
+            onUpdate={updateDuties(experience.id)}
           ></Duties>
         </ul>
         <button

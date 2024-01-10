@@ -27,11 +27,11 @@ const exampleDuties = [
   },
 ];
 
-export default function Duties({ dutyIds, onDelete }) {
+export default function Duties({ dutyIds, onUpdate }) {
   const [duties, setDuties] = useState(exampleDuties);
 
   function deleteDuty(deleteID) {
-    onDelete(deleteID);
+    onUpdate(dutyIds.filter((id) => id !== deleteID));
     deleteStateObject(duties, setDuties, deleteID);
   }
 
