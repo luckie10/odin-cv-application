@@ -49,17 +49,19 @@ function Experience() {
       generatorParams,
     );
 
-    function deleteDuty(modifyExp, deleteID) {
-      setExperiences(
-        experiences.map((exp) => {
-          if (exp.id === modifyExp.id)
-            return {
-              ...exp,
-              dutyIds: exp.dutyIds.filter((id) => id !== deleteID),
-            };
-          return exp;
-        }),
-      );
+    function deleteDuty(experienceId) {
+      return function (deleteID) {
+        setExperiences(
+          experiences.map((exp) => {
+            if (exp.id === experienceId)
+              return {
+                ...exp,
+                dutyIds: exp.dutyIds.filter((id) => id !== deleteID),
+              };
+            return exp;
+          }),
+        );
+      };
     }
 
     return (
@@ -70,13 +72,10 @@ function Experience() {
         </h3>
         <h4>{company}</h4>
         <ul>
-          {experience.dutyIds.map((dutyId) => (
-            <Duties
-              key={dutyId}
-              dutyId={dutyId}
-              onDelete={() => deleteDuty(experience, dutyId)}
-            ></Duties>
-          ))}
+          <Duties
+            dutyIds={experience.dutyIds}
+            onDelete={deleteDuty(experience.id)}
+          ></Duties>
         </ul>
         <button
           onClick={() =>

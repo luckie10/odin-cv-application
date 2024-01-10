@@ -27,23 +27,28 @@ const exampleDuties = [
   },
 ];
 
-export default function Duties({ dutyId, onDelete }) {
+export default function Duties({ dutyIds, onDelete }) {
   const [duties, setDuties] = useState(exampleDuties);
 
   function deleteDuty(deleteID) {
-    onDelete();
+    onDelete(deleteID);
     deleteStateObject(duties, setDuties, deleteID);
   }
 
   return (
-    <li>
-      <button onClick={deleteDuty}>X</button>
-      <InputField
-        inputName="experience-duty"
-        state={duties.find(({ id }) => id === dutyId).duty}
-        setState={objectSetStateHandler(duties, setDuties, dutyId, "duty")}
-        type="textarea"
-      />
-    </li>
+    <>
+      {dutyIds.map((dutyId) => (
+        <li key={dutyId}>
+          <button onClick={() => deleteDuty(dutyId)}>X</button>
+          <InputField
+            inputName="experience-duty"
+            state={duties.find(({ id }) => id === dutyId).duty}
+            setState={objectSetStateHandler(duties, setDuties, dutyId, "duty")}
+            type="textarea"
+          />
+        </li>
+      ))}
+      <button>+</button>
+    </>
   );
 }
