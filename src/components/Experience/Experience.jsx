@@ -21,8 +21,20 @@ const exampleExperinces = [
   },
 ];
 
+function experienceFactory(
+  company = "Company",
+  position = "Position",
+  date = "Date",
+) {
+  return { id: crypto.randomUUID(), company, position, date, dutyIds: [] };
+}
+
 function Experience() {
   const [experiences, setExperiences] = useState(exampleExperinces);
+
+  function addExperience() {
+    setExperiences([...experiences, experienceFactory()]);
+  }
 
   function generateExperience(experience, index) {
     const generatorParams = [
@@ -60,8 +72,13 @@ function Experience() {
     );
   }
 
-  return experiences.map((experience, index) =>
-    generateExperience(experience, index),
+  return (
+    <>
+      {experiences.map((experience, index) =>
+        generateExperience(experience, index),
+      )}
+      <button onClick={() => addExperience()}>Add</button>
+    </>
   );
 }
 
