@@ -49,6 +49,19 @@ function Experience() {
       generatorParams,
     );
 
+    function deleteDuty(modifyExp, deleteID) {
+      setExperiences(
+        experiences.map((exp) => {
+          if (exp.id === modifyExp.id)
+            return {
+              ...exp,
+              dutyIds: exp.dutyIds.filter((id) => id !== deleteID),
+            };
+          return exp;
+        }),
+      );
+    }
+
     return (
       <div key={experience.id} className="experience-container">
         <h3>
@@ -57,8 +70,12 @@ function Experience() {
         </h3>
         <h4>{company}</h4>
         <ul>
-          {experience.dutyIds.map((duty) => (
-            <Duties key={duty} dutyId={duty}></Duties>
+          {experience.dutyIds.map((dutyId) => (
+            <Duties
+              key={dutyId}
+              dutyId={dutyId}
+              onDelete={() => deleteDuty(experience, dutyId)}
+            ></Duties>
           ))}
         </ul>
         <button
