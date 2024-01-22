@@ -18,8 +18,21 @@ const exampleDegrees = [
   },
 ];
 
+function degreeFactory(title = "Title", school = "School", year = "Year") {
+  return {
+    id: crypto.randomUUID(),
+    title,
+    school,
+    year,
+  };
+}
+
 function Education() {
   const [degrees, setDegrees] = useState(exampleDegrees);
+
+  function addDegree() {
+    setDegrees([...degrees, degreeFactory()]);
+  }
 
   return (
     <div className="education-container">
@@ -54,6 +67,7 @@ function Education() {
           </button>
         </div>
       ))}
+      <button onClick={addDegree}>Add</button>
     </div>
   );
 }
