@@ -10,7 +10,6 @@ export default function InputField({
   const [isEditable, setIsEditable] = useState(false);
   const InputType = type;
 
-  console.log(inputName);
   return (
     <>
       {isEditable ? (
